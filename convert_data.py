@@ -4,6 +4,7 @@
 
 import os
 from datetime import datetime
+import csv
 
 
 lastNum = 0
@@ -102,3 +103,16 @@ for filePath in fileList:
     
 print(fileObjList)
 # 写入
+
+with open('./history.csv', 'w', newline='', encoding='utf-8') as csvfile:
+    csvfile.write('\ufeff')
+
+    cvswriter = csv.writer(csvfile, delimiter=',',
+                            quotechar=',', quoting=csv.QUOTE_MINIMAL)
+    # spamwriter.writerow(['Spam'] * 5 + ['Baked Beans'])
+    # spamwriter.writerow(['Spam', 'Lovely Spam', 'Wonderful Spam'])
+    cvswriter.writerow(['时间', '车位数'])
+    for obj in fileObjList:
+        cvswriter.writerow([obj['date'], obj['num']])
+
+
