@@ -102,6 +102,11 @@ for filePath in fileList:
     fileObjList.extend(obj)
     
 print(fileObjList)
+
+#排序
+def sortObj(obj):
+    return obj['date']
+fileObjList.sort(key=sortObj)
 # 写入
 
 with open('./history.csv', 'w', newline='', encoding='utf-8') as csvfile:
